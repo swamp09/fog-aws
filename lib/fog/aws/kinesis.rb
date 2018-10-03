@@ -7,7 +7,6 @@ module Fog
       class LimitExceeded < Fog::Errors::Error; end
       class ResourceInUse < Fog::Errors::Error; end
       class ResourceNotFound < Fog::Errors::Error; end
-      class ExpiredIterator < Fog::Errors::Error; end
       class InvalidArgument < Fog::Errors::Error; end
       class ProvisionedThroughputExceeded < Fog::Errors::Error; end
 
@@ -111,8 +110,6 @@ module Fog
                   Fog::AWS::Kinesis::ResourceInUse.slurp(error, match[:message])
                 when 'ResourceNotFoundException'
                   Fog::AWS::Kinesis::ResourceNotFound.slurp(error, match[:message])
-                when 'ExpiredIteratorException'
-                  Fog::AWS::Kinesis::ExpiredIterator.slurp(error, match[:message])
                 when 'InvalidArgumentException'
                   Fog::AWS::Kinesis::InvalidArgument.slurp(error, match[:message])
                 when 'ProvisionedThroughputExceededException'
